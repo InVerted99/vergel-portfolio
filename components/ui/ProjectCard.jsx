@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { useReducedMotion } from "motion/react";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
 import { cn } from "@/lib/utils";
@@ -13,27 +11,11 @@ import { cn } from "@/lib/utils";
  * `flip` mirrors the layout on desktop so the page alternates.
  */
 export function ProjectCard({ project, index, flip = false }) {
-  const video = useRef(null);
-  const reduce = useReducedMotion();
   const n = String(index + 1).padStart(2, "0");
-
-  const onEnter = () => {
-    if (!reduce) video.current?.play().catch(() => {});
-  };
-  const onLeave = () => {
-    if (video.current) {
-      video.current.pause();
-      video.current.currentTime = 0;
-    }
-  };
 
   return (
     <article
-      onPointerEnter={onEnter}
-      onPointerLeave={onLeave}
-      onFocus={onEnter}
-      onBlur={onLeave}
-      className="group relative grid items-center gap-8 md:grid-cols-12 md:gap-12"
+      className="relative grid items-center gap-8 md:grid-cols-12 md:gap-12"
       style={{ ["--tint"]: project.tint }}
     >
       {/* Cover */}
@@ -48,25 +30,9 @@ export function ProjectCard({ project, index, flip = false }) {
           alt={project.coverAlt}
           fill
           sizes="(min-width: 768px) 55vw, 100vw"
-          className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+          className="object-cover"
+          style={{ objectPosition: project.coverPosition ?? "center" }}
           priority={index === 0}
-        />
-        {project.video && (
-          <video
-            ref={video}
-            src={project.video}
-            muted
-            loop
-            playsInline
-            preload="none"
-            aria-hidden
-            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          />
-        )}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-0 mix-blend-soft-light transition-opacity duration-500 group-hover:opacity-100"
-          style={{ background: "radial-gradient(circle at 70% 20%, var(--tint), transparent 60%)" }}
         />
         {project.featured && (
           <span className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-accent px-3 py-1 font-mono text-xs font-medium uppercase tracking-wider text-accent-fg">
@@ -80,7 +46,7 @@ export function ProjectCard({ project, index, flip = false }) {
         <div className="flex items-center gap-4">
           <span
             aria-hidden
-            className="font-display text-5xl font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_var(--fg-muted)] transition-[-webkit-text-stroke-color] duration-500 group-hover:[-webkit-text-stroke-color:var(--tint)] md:text-6xl"
+            className="font-display text-5xl font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_var(--fg-muted)] md:text-6xl"
           >
             {n}
           </span>
@@ -127,13 +93,9 @@ export function ProjectCard({ project, index, flip = false }) {
         </ul>
 
         <div className="flex flex-wrap items-center gap-3 pt-2">
-          <span className="flex h-12 items-center gap-2 rounded-full bg-fg px-5 text-sm font-medium text-bg transition-colors duration-300 group-hover:bg-accent group-hover:text-accent-fg">
-            Read case study
-            <ArrowRight
-              size={16}
-              aria-hidden
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
+          <span className="flex h-12 items-center gap-2 rounded-full bg-accent px-5 text-sm font-medium text-accent-fg">
+            Read Project
+            <ArrowRight size={16} aria-hidden />
           </span>
           {project.live && (
             <a

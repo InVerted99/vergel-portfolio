@@ -41,13 +41,13 @@ export const navLinks = [
 ];
 export const about = {
   story: [
-    "I'm a fourth-year Information Technology student at Tarlac State University, specializing in Web and Mobile Development, and a consistent Dean's Lister.",
+    "I'm a fourth-year Information Technology student at Tarlac State University, specializing in Web and Mobile Development, and a seven-time Dean's Lister.",
     "I design user interfaces in Figma and build them as responsive, mobile-first web apps with React, Next.js, and Tailwind CSS. Most recently I led the development team for Lights Out, Alerts On, a capstone outage reporting system with a live map dashboard.",
     "I work through Git and GitHub with my teammates and deploy my projects with Vercel, Neon, and Render.",
   ],
   stats: [
     { value: 4, suffix: "", label: "Projects shipped, from capstone to personal builds" },
-    { value: 2, suffix: "×", label: "Dean's Lister (AY 2023–2025)" },
+    { value: 7, suffix: "×", label: "Dean's Lister at Tarlac State University" },
     { value: 3, suffix: "", label: "Certifications earned" },
     { value: 5, suffix: "", label: "Seminars attended in 2026" },
   ],

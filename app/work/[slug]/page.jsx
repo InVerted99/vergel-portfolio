@@ -150,6 +150,7 @@ export default async function ProjectPage({ params }) {
               priority
               sizes="(min-width: 1440px) 1344px, 100vw"
               className="object-cover"
+              style={{ objectPosition: project.coverPosition ?? "center" }}
             />
           </div>
         </Reveal>

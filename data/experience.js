@@ -36,8 +36,8 @@ export const experience = [
     kind: "certification",
   },
   {
-    period: "AY 2023 – 2025",
-    title: "Dean's Lister",
+    period: "AY 2023 – present",
+    title: "Dean's Lister (7×)",
     org: "Tarlac State University",
     kind: "award",
   },
