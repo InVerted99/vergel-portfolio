@@ -1,0 +1,13 @@
+import { site } from "@/data/site";
+export default function manifest() {
+  return {
+    name: `${site.name} — Portfolio`,
+    short_name: site.firstName,
+    description: site.description,
+    start_url: "/",
+    display: "standalone",
+    background_color: "#0a0a0b",
+    theme_color: "#0a0a0b",
+    icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
+  };
+}
